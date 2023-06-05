@@ -14,4 +14,10 @@ after_success:
   - docker build -t fadsey22/multi-nginx ./complex/nginx
   - docker build -t fadsey22/multi-server ./complex/server
   - docker build -t fadsey22/multi-worker ./complex/worker
-
+  # Take those images to push to docker hub
+  - echo "$DOCKER_PWASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  
+  - docker push fadsey22/multi-client
+  - docker push fadsey22/multi-nginx
+  - docker push fadsey22/multi-server
+  - docker push fadsey22/multi-worker
