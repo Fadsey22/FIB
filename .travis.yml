@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true fadsey22 npm test
 
 after_success:
-  - docker build -t {$DOCKER_ID}/multi-client ./complex/client
-  - docker build -t {$DOCKER_ID}/multi-nginx ./complex/nginx
-  - docker build -t {$DOCKER_ID}/multi-server ./complex/server
-  - docker build -t {$DOCKER_ID}/multi-worker ./complex/worker
+  - docker build -t $DOCKER_ID/multi-client ./complex/client
+  - docker build -t $DOCKER_ID/multi-nginx ./complex/nginx
+  - docker build -t $DOCKER_ID/multi-server ./complex/server
+  - docker build -t $DOCKER_ID/multi-worker ./complex/worker
   # Take those images to push to docker hub
   - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io
   
